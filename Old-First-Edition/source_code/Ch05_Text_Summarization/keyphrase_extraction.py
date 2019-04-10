@@ -14,8 +14,8 @@ alice = gutenberg.sents(fileids='carroll-alice.txt')
 alice = [' '.join(ts) for ts in alice]
 norm_alice = filter(None, normalize_corpus(alice, lemmatize=False))
 
-# print first line
-print norm_alice[0]
+# print(first line
+print(norm_alice[0])
 
 def flatten_corpus(corpus):
     return ' '.join([document.strip() 
@@ -133,7 +133,7 @@ def get_chunks(sentences, grammar = r'NP: {<DT>? <JJ>* <NN.*>+}'):
     
 sentences = parse_document(toy_text)          
 valid_chunks = get_chunks(sentences)
-print valid_chunks
+print(valid_chunks)
 
 def get_tfidf_weighted_keyphrases(sentences, 
                                   grammar=r'NP: {<DT>? <JJ>* <NN.*>+}',

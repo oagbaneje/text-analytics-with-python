@@ -33,7 +33,7 @@ def text_summarization_gensim(text, summary_ratio=0.5):
     
     summary = summarize(text, split=True, ratio=summary_ratio)
     for sentence in summary:
-        print sentence
+        print(sentence)
 
 docs = parse_document(toy_text)
 text = ' '.join(docs)
@@ -45,7 +45,7 @@ sentences = parse_document(toy_text)
 norm_sentences = normalize_corpus(sentences,lemmatize=False) 
 
 total_sentences = len(norm_sentences)
-print 'Total Sentences in Document:', total_sentences   
+print('Total Sentences in Document:', total_sentences)   
 
 
 
@@ -65,14 +65,14 @@ min_sigma_value = max(s) * sv_threshold
 s[s < min_sigma_value] = 0
 
 salience_scores = np.sqrt(np.dot(np.square(s), np.square(vt)))
-print np.round(salience_scores, 2)
+print(np.round(salience_scores, 2))
 
 top_sentence_indices = salience_scores.argsort()[-num_sentences:][::-1]
 top_sentence_indices.sort()
-print top_sentence_indices
+print(top_sentence_indices)
 
 for index in top_sentence_indices:
-    print sentences[index]
+    print(sentences[index])
     
     
 def lsa_text_summarizer(documents, num_sentences=2,
@@ -94,7 +94,7 @@ def lsa_text_summarizer(documents, num_sentences=2,
     top_sentence_indices.sort()
     
     for index in top_sentence_indices:
-        print sentences[index]
+        print(sentences[index])
     
     
     
@@ -105,7 +105,7 @@ num_sentences = 3
 vec, dt_matrix = build_feature_matrix(norm_sentences, 
                                       feature_type='tfidf')
 similarity_matrix = (dt_matrix * dt_matrix.T)
-print np.round(similarity_matrix.todense(), 2)
+print(np.round(similarity_matrix.todense(), 2))
 
 similarity_graph = networkx.from_scipy_sparse_matrix(similarity_matrix)
 
@@ -122,10 +122,10 @@ ranked_sentences
 top_sentence_indices = [ranked_sentences[index][1] 
                         for index in range(num_sentences)]
 top_sentence_indices.sort()
-print top_sentence_indices
+print(top_sentence_indices)
 
 for index in top_sentence_indices:
-    print sentences[index]
+    print(sentences[index])
     
 
 def textrank_text_summarizer(documents, num_sentences=2,
@@ -148,7 +148,7 @@ def textrank_text_summarizer(documents, num_sentences=2,
     top_sentence_indices.sort()
     
     for index in top_sentence_indices:
-        print sentences[index]                             
+        print(sentences[index])                             
     
 
 DOCUMENT = """
@@ -183,7 +183,7 @@ and will engage in combat.
 
 sentences = parse_document(DOCUMENT)
 norm_sentences = normalize_corpus(sentences,lemmatize=True) 
-print "Total Sentences:", len(norm_sentences) 
+print("Total Sentences:", len(norm_sentences)) 
 
 lsa_text_summarizer(norm_sentences, num_sentences=3,
                     num_topics=5, feature_type='frequency',

@@ -10,7 +10,7 @@ import re
 import nltk
 import string
 from nltk.stem import WordNetLemmatizer
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 import unicodedata
 
 stopword_list = nltk.corpus.stopwords.words('english')
